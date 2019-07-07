@@ -249,7 +249,7 @@ export class FilePlayer extends Component {
     this.player = player
   }
   render () {
-    const { url, playing, loop, controls, muted, config, width, height } = this.props
+    const { url, playing, loop, controls, muted, config, width, height, preload } = this.props
     const useAudio = this.shouldUseAudio(this.props)
     const Element = useAudio ? 'audio' : 'video'
     const style = {
@@ -261,7 +261,7 @@ export class FilePlayer extends Component {
         ref={this.ref}
         src={this.getSource(url)}
         style={style}
-        preload='auto'
+        preload= {preload || 'auto'}
         autoPlay={playing || undefined}
         controls={controls}
         muted={muted}
